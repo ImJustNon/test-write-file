@@ -11,14 +11,12 @@ const path = require('path');
 
 
 app.get('/write', async (req, res) => {
-    try {
-        let data = "If you see this, It work!!"
-        fs.writeFileSync(path.join(__dirname + "/temp/data.txt"), data);
-        res.send("success!");
-    }
-    catch (e) {
-        res.send(e);
-    }
+    fs.writeFile(path.join(__dirname + "/temp/data.txt"), data, (err) => {
+        if(err){
+            return res.send(err);
+        }
+        res.send("Success");
+    });
 });
 app.get('/read', async (req, res) => {
     try {
