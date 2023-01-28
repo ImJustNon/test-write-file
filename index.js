@@ -11,6 +11,7 @@ const path = require('path');
 
 
 app.get('/write', async (req, res) => {
+    const data = "If you see this , It works!!"
     fs.writeFile(path.join(__dirname + "/temp/data.txt"), data, (err) => {
         if(err){
             return res.send(err);
